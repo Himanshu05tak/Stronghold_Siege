@@ -3,7 +3,7 @@ using UnityEngine;
 namespace ScriptableObjects
 {
      [CreateAssetMenu(menuName = "ScriptableObjects/BuildingType")]
-    public class BuildingTypeSO : ScriptableObject
+    public class BuildingTypeSo : ScriptableObject
     {
         public string nameString;
         public Transform prefab;

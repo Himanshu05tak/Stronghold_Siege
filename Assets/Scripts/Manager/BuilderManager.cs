@@ -1,20 +1,24 @@
+using System;
 using ScriptableObjects;
 using UnityEngine;
 
 namespace Manager
 {
-    public class BuilderDefenderManager : MonoBehaviour
+    public class BuilderManager : MonoBehaviour
     {
-        private BuildingTypeListSO _buildingTypeListSo;
-        private BuildingTypeSO _buildingType;
+        private BuildingTypeListSo _buildingTypeListSo;
+        private BuildingTypeSo _buildingType;
         private Camera _mainCamera;
+
+        private void Awake()
+        {
+            _buildingTypeListSo = Resources.Load<BuildingTypeListSo>(nameof(BuildingTypeListSo));
+            _buildingType = _buildingTypeListSo.list[0];
+        }
 
         private void Start()
         {
             _mainCamera = Camera.main;
-
-            _buildingTypeListSo = Resources.Load<BuildingTypeListSO>(nameof(BuildingTypeListSO));
-            _buildingType = _buildingTypeListSo.list[0];
         }
 
         private void Update()
