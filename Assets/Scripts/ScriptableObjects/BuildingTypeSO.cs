@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Data;
 using UnityEngine;
 
 namespace ScriptableObjects
@@ -7,5 +9,6 @@ namespace ScriptableObjects
     {
         public string nameString;
         public Transform prefab;
+        public List<ResourceGeneratorData> resourceGeneratorData;
     }
 }

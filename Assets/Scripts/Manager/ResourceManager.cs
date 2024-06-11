@@ -6,9 +6,11 @@ namespace Manager
 {
     public class ResourceManager : MonoBehaviour
     {
+        public static ResourceManager Instance { get; private set; }
         private Dictionary<ResourceTypeSo, int> _resourceAmountDictionary;
         private void Awake()
         {
+            Instance = this;
             _resourceAmountDictionary = new Dictionary<ResourceTypeSo, int>();
 
             var resourceTypeList = Resources.Load<ResourceTypeListSo>(nameof(ResourceTypeListSo));
@@ -42,6 +44,7 @@ namespace Manager
         public void AddResource(ResourceTypeSo resourceType, int amount)
         {
             _resourceAmountDictionary[resourceType] += amount;
+            TestLogResourceAmountDictionary();
         }
     }
 }
