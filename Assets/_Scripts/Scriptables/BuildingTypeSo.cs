@@ -10,5 +10,6 @@ namespace _Scripts.Scriptables
         public string nameString;
         public Transform prefab;
         public List<ResourceGeneratorData> resourceGeneratorData;
+        public Sprite sprite;
     }
 }

@@ -7,5 +7,7 @@ namespace _Scripts.Data
     {
         public float timerMax;
         public ResourceTypeSo resourceType;
+        public float resourceDetectionRadius;
+        public int maxResourceAmount;
     }
 }

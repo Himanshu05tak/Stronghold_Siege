@@ -22,8 +22,6 @@ namespace _Scripts.Managers
             {
                 _resourceAmountDictionary[resourceType] = 0;
             }
-
-            TestLogResourceAmountDictionary();
         }
 
         private void Update()
@@ -32,7 +30,6 @@ namespace _Scripts.Managers
             {
                 var resourceTypeList = Resources.Load<ResourceTypeListSo>(nameof(ResourceTypeListSo));
                 AddResource(resourceTypeList.list[0], 2);
-                TestLogResourceAmountDictionary();
             }
         }
 
@@ -48,7 +45,6 @@ namespace _Scripts.Managers
         {
             _resourceAmountDictionary[resourceType] += amount;
             OnResourceAmountChanged?.Invoke(this,EventArgs.Empty);
-            TestLogResourceAmountDictionary();
         }
 
         public int GetResourceAmount(ResourceTypeSo resourceType)
