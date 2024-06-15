@@ -28,24 +28,22 @@ namespace _Scripts.Managers
         {
             //var results = new Collider2D[] { };
             //Physics2D.OverlapCircleNonAlloc(transform.position, 5f, results);
-            for (var i = 0; i < _resourceGeneratorData.Count; i++)
+            foreach (var data in _resourceGeneratorData)
             {
-                var results = Physics2D.OverlapCircleAll(transform.position, _resourceGeneratorData[i].resourceDetectionRadius);
+                var results = Physics2D.OverlapCircleAll(transform.position, data.resourceDetectionRadius);
 
                 var nearbyResourceAmount = 0;
                 foreach (var result in results)
                 {
                     var resourceNode = result.GetComponent<ResourceNode>();
-                    if (resourceNode != null)
-                    {
-                        //It's a resource node!
-                        if(resourceNode.resourceType == _resourceGeneratorData[i].resourceType)
-                            nearbyResourceAmount++;
-                    }
+                    if (resourceNode == null) continue;
+                    //It's a resource node!
+                    if(resourceNode.resourceType == data.resourceType)
+                        nearbyResourceAmount++;
                 }
 
                 nearbyResourceAmount = Mathf.Clamp(nearbyResourceAmount, 0,
-                    _resourceGeneratorData[i].maxResourceAmount);
+                    data.maxResourceAmount);
 
                 if (nearbyResourceAmount == 0)
                 {
@@ -55,11 +53,11 @@ namespace _Scripts.Managers
                 }
                 else
                 {
-                    foreach (ResourceGeneratorData resourceGeneratorData in _resourceGeneratorData)
+                    foreach (var resourceGeneratorData in _resourceGeneratorData)
                     {
-                        resourceGeneratorData.timerMax = (_resourceGeneratorData[i].timerMax / 2f) + _resourceGeneratorData[i].timerMax *
-                                                         (1 - (float)nearbyResourceAmount / _resourceGeneratorData[i].maxResourceAmount);
-                    Debug.Log($" nearbyResourceAmount: {nearbyResourceAmount} TimerMax {resourceGeneratorData.timerMax}");
+                        _maxTimerOnEachData[resourceGeneratorData] = data.timerMax / 2f + data.timerMax *
+                            (1 - (float)nearbyResourceAmount / data.maxResourceAmount);
+                        Debug.Log($" nearbyResourceAmount: {nearbyResourceAmount} TimerMax {_maxTimerOnEachData[resourceGeneratorData]}");
                     }
                 }
             }

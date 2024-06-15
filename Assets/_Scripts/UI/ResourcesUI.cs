@@ -11,6 +11,7 @@ namespace _Scripts.UI
     public class ResourcesUI : MonoBehaviour
     {
         private const float OFFSET_X = -160f;
+        private const float OFFSET_Y = -50f;
         
         private ResourceTypeListSo _resourceTypeList;
         private Dictionary<ResourceTypeSo, Transform> _resourceTypeTransformDictionary;
@@ -28,7 +29,7 @@ namespace _Scripts.UI
                 var resourceTransform = Instantiate(resourceTemplate, transform);
                 resourceTransform.gameObject.SetActive(true);
                 
-                resourceTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(OFFSET_X * index, 0);
+                resourceTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(OFFSET_X * index, OFFSET_Y);
 
                 var resourceImage = resourceTransform.Find("image").GetComponent<Image>();
                 resourceImage.sprite = resourceType.sprite;

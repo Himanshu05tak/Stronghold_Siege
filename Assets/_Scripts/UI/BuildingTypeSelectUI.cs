@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using _Scripts.Managers;
@@ -13,6 +12,7 @@ namespace _Scripts.UI
         private Transform _arrowBtn;
         private const float MAX_ARROW_ICON_SIZE = -50f;
         private const float X_OFFSET = 130f;
+        private const float Y_OFFSET = 60f;
         private Dictionary<BuildingTypeSo, Transform> _btnTransformDictionary;
         private void Awake()
         {
@@ -23,7 +23,7 @@ namespace _Scripts.UI
            _arrowBtn = Instantiate(btnTemplate, transform);
            _arrowBtn.gameObject.SetActive(true);
 
-           _arrowBtn.GetComponent<RectTransform>().anchoredPosition = new Vector2(X_OFFSET * index, 0);
+           _arrowBtn.GetComponent<RectTransform>().anchoredPosition = new Vector2(X_OFFSET * index, Y_OFFSET);
 
            _arrowBtn.Find("image").GetComponent<Image>().sprite = arrowSprite;
            _arrowBtn.Find("image").GetComponent<RectTransform>().sizeDelta = new Vector2(0,MAX_ARROW_ICON_SIZE);
@@ -39,7 +39,7 @@ namespace _Scripts.UI
                 var btnTransform = Instantiate(btnTemplate, transform);
                 btnTransform.gameObject.SetActive(true);
 
-                btnTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(X_OFFSET * index, 0);
+                btnTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(X_OFFSET * index, Y_OFFSET);
 
                 btnTransform.Find("image").GetComponent<Image>().sprite = buildingType.sprite;
 
@@ -79,7 +79,7 @@ namespace _Scripts.UI
             var btnTransform = Instantiate(btnTemplate, transform);
             btnTransform.gameObject.SetActive(true);
 
-            btnTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(X_OFFSET * index, 0);
+            btnTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(X_OFFSET * index, Y_OFFSET);
 
             btnTransform.Find("image").GetComponent<Image>().sprite = buildingType.sprite;
 
