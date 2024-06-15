@@ -9,33 +9,37 @@ namespace _Scripts.UI
     public class BuildingTypeSelectUI : MonoBehaviour
     {
         [SerializeField] private Sprite arrowSprite;
+        [SerializeField] private List<BuildingTypeSo> ignoreBuildingTypes;
+
         private Transform _arrowBtn;
         private const float MAX_ARROW_ICON_SIZE = -50f;
         private const float X_OFFSET = 130f;
         private const float Y_OFFSET = 60f;
         private Dictionary<BuildingTypeSo, Transform> _btnTransformDictionary;
+
         private void Awake()
         {
             var btnTemplate = GetBtnTemplate(out var buildingTypeList);
             //CloningBuildingTypes(buildingTypeList, btnTemplate);
-            
+
             var index = 0;
-           _arrowBtn = Instantiate(btnTemplate, transform);
-           _arrowBtn.gameObject.SetActive(true);
+            _arrowBtn = Instantiate(btnTemplate, transform);
+            _arrowBtn.gameObject.SetActive(true);
 
-           _arrowBtn.GetComponent<RectTransform>().anchoredPosition = new Vector2(X_OFFSET * index, Y_OFFSET);
+            _arrowBtn.GetComponent<RectTransform>().anchoredPosition = new Vector2(X_OFFSET * index, Y_OFFSET);
 
-           _arrowBtn.Find("image").GetComponent<Image>().sprite = arrowSprite;
-           _arrowBtn.Find("image").GetComponent<RectTransform>().sizeDelta = new Vector2(0,MAX_ARROW_ICON_SIZE);
+            _arrowBtn.Find("image").GetComponent<Image>().sprite = arrowSprite;
+            _arrowBtn.Find("image").GetComponent<RectTransform>().sizeDelta = new Vector2(0, MAX_ARROW_ICON_SIZE);
 
-           _arrowBtn.GetComponent<Button>().onClick.AddListener(() =>
+            _arrowBtn.GetComponent<Button>().onClick.AddListener(() =>
             {
                 BuildingManager.Instance.SetBuildingType(null);
             });
-        
-           index++;
+
+            index++;
             foreach (var buildingType in buildingTypeList.list)
             {
+                if (ignoreBuildingTypes.Contains(buildingType)) continue;
                 var btnTransform = Instantiate(btnTemplate, transform);
                 btnTransform.gameObject.SetActive(true);
 
@@ -58,7 +62,8 @@ namespace _Scripts.UI
             UpdateActiveBuildingTypeButton();
         }
 
-        private void BuildingManager_OnActiveBuildingTypeChanged(object sender, BuildingManager.OnActiveBuildingTypeChangedEventArgs e)
+        private void BuildingManager_OnActiveBuildingTypeChanged(object sender,
+            BuildingManager.OnActiveBuildingTypeChangedEventArgs e)
         {
             UpdateActiveBuildingTypeButton();
         }
@@ -110,7 +115,7 @@ namespace _Scripts.UI
             }
 
             var activeBuildingType = BuildingManager.Instance.GetActiveBuildingType;
-            if(activeBuildingType==null)
+            if (activeBuildingType == null)
                 _arrowBtn.Find("selected").gameObject.SetActive(true);
             else
                 _btnTransformDictionary[activeBuildingType].Find("selected").gameObject.SetActive(true);
