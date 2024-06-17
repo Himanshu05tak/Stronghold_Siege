@@ -33,14 +33,6 @@ namespace _Scripts.Managers
             }
         }
 
-        void TestLogResourceAmountDictionary()
-        {
-            foreach (var resourceType in _resourceAmountDictionary.Keys)
-            {
-                Debug.Log($"{resourceType.nameString} : {_resourceAmountDictionary[resourceType]}");
-            }
-        }
-
         public void AddResource(ResourceTypeSo resourceType, int amount)
         {
             _resourceAmountDictionary[resourceType] += amount;
@@ -50,6 +42,31 @@ namespace _Scripts.Managers
         public int GetResourceAmount(ResourceTypeSo resourceType)
         {
             return _resourceAmountDictionary[resourceType];
+        }
+
+        public bool CanAfford(ResourceAmount[] resourceAmounts)
+        {
+            foreach (var resourceAmount in resourceAmounts)
+            {
+                if (GetResourceAmount(resourceAmount.resourceType) >= resourceAmount.amount)
+                {
+                    //Can afford 
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        public void SpendResources(ResourceAmount[] resourceAmounts)
+        {
+            foreach (var resourceAmount in resourceAmounts)
+            {
+                if (GetResourceAmount(resourceAmount.resourceType) >= resourceAmount.amount)
+                    _resourceAmountDictionary[resourceAmount.resourceType] -= resourceAmount.amount;
+            }
         }
     }
 }

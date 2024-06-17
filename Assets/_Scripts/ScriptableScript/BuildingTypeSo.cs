@@ -12,5 +12,6 @@ namespace _Scripts.ScriptableScript
         public ResourceGeneratorData resourceGeneratorData;
         public Sprite sprite;
         public float minConstructionRadius;
+        public ResourceAmount[] constructionResourceAmounts;
     }
 }

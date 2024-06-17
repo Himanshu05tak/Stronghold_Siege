@@ -26,8 +26,14 @@ namespace _Scripts.Managers
         private void Update()
         {
             if (!Input.GetMouseButtonDown(0) || EventSystem.current.IsPointerOverGameObject()) return;
-            if(_activeBuildingType!=null && CanSpawnBuilding(_activeBuildingType,Utility.GetMouseWorldPosition()))
-                Instantiate(_activeBuildingType.prefab, Utility.GetMouseWorldPosition(), Quaternion.identity);
+            if (_activeBuildingType != null && CanSpawnBuilding(_activeBuildingType, Utility.GetMouseWorldPosition()))
+            {
+                if (ResourceManager.Instance.CanAfford(_activeBuildingType.constructionResourceAmounts))
+                {
+                    ResourceManager.Instance.SpendResources(_activeBuildingType.constructionResourceAmounts);
+                    Instantiate(_activeBuildingType.prefab, Utility.GetMouseWorldPosition(), Quaternion.identity);
+                }
+            }
         }
         public void SetBuildingType(BuildingTypeSo buildingType)
         {
