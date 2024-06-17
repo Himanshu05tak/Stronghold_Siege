@@ -1,16 +1,18 @@
-using _Scripts.Managers;
-using _Scripts.Utilities;
 using UnityEngine;
+using _Scripts.Managers;
+using _Scripts.UI;
+using _Scripts.Utilities;
 
 namespace _Scripts.Systems
 {
     public class BuildingGhost : MonoBehaviour
     {
         private GameObject _sprite;
-
+        private ResourceNearbyOverlay _resourceGeneratorOverlay;
         private void Awake()
         {
             _sprite = transform.Find("sprite").gameObject;
+            _resourceGeneratorOverlay = transform.Find("PF_ResourceNearbyOverlay").GetComponent<ResourceNearbyOverlay>();
             Hide();
         }
 
@@ -24,7 +26,10 @@ namespace _Scripts.Systems
             if (e.ActiveBuildingType == null)
                 Hide();
             else
+            {
                 Show(e.ActiveBuildingType.sprite);
+                _resourceGeneratorOverlay.Show(e.ActiveBuildingType.resourceGeneratorData);
+            }
         }
 
         private void Update()

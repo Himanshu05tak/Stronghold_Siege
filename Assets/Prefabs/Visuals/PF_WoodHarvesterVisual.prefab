@@ -4904,7 +4904,7 @@ GameObject:
   - component: {fileID: 3565715747615973155}
   - component: {fileID: 2268314973451219183}
   m_Layer: 0
-  m_Name: pfWoodHarvesterVisual
+  m_Name: PF_WoodHarvesterVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

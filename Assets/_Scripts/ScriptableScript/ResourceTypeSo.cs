@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Scripts.Scriptables
+namespace _Scripts.ScriptableScript
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/ResourceType")]
     public class ResourceTypeSo : ScriptableObject

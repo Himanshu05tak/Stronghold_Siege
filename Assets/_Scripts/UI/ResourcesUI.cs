@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Scripts.Managers;
-using _Scripts.Scriptables;
+using _Scripts.ScriptableScript;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

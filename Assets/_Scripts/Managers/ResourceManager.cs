@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using _Scripts.Scriptables;
+using _Scripts.ScriptableScript;
 using UnityEngine;
 
 namespace _Scripts.Managers

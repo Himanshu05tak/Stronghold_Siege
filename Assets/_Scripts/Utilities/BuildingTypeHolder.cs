@@ -1,4 +1,4 @@
-using _Scripts.Scriptables;
+using _Scripts.ScriptableScript;
 using UnityEngine;
 
 namespace _Scripts.Utilities

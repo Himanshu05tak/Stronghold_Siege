@@ -1,5 +1,5 @@
 using System;
-using _Scripts.Scriptables;
+using _Scripts.ScriptableScript;
 using _Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.EventSystems;

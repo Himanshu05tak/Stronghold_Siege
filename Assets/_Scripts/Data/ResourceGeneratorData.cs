@@ -1,4 +1,4 @@
-using _Scripts.Scriptables;
+using _Scripts.ScriptableScript;
 
 namespace _Scripts.Data
 {

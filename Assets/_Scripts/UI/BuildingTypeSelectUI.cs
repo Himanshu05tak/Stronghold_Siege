@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using _Scripts.Managers;
-using _Scripts.Scriptables;
 using System.Collections.Generic;
+using _Scripts.ScriptableScript;
 
 namespace _Scripts.UI
 {
