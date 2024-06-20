@@ -14,7 +14,7 @@ namespace _Scripts.ScriptableScript
         public Sprite sprite;
         public float minConstructionRadius;
         public ResourceAmount[] constructionResourceAmounts;
-
+        public int healthAmountMax;
         public string GetConstructionResourcesCostString()
         {
             var infoText = constructionResourceAmounts.Aggregate("", (current, resourceAmount)

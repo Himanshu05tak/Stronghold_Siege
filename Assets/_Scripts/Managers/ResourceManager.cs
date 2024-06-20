@@ -23,16 +23,6 @@ namespace _Scripts.Managers
                 _resourceAmountDictionary[resourceType] = 0;
             }
         }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                var resourceTypeList = Resources.Load<ResourceTypeListSo>(nameof(ResourceTypeListSo));
-                AddResource(resourceTypeList.list[0], 2);
-            }
-        }
-
         public void AddResource(ResourceTypeSo resourceType, int amount)
         {
             _resourceAmountDictionary[resourceType] += amount;

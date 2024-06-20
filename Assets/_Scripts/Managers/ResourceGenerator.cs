@@ -1,5 +1,6 @@
 using UnityEngine;
 using _Scripts.Data;
+using _Scripts.Data.Components;
 using _Scripts.Utilities;
 
 namespace _Scripts.Managers

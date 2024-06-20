@@ -1,7 +1,7 @@
 using _Scripts.ScriptableScript;
 using UnityEngine;
 
-namespace _Scripts.Utilities
+namespace _Scripts.Data.Components
 {
     public class BuildingTypeHolder : MonoBehaviour
     {
