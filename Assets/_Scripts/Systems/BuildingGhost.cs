@@ -8,11 +8,11 @@ namespace _Scripts.Systems
     public class BuildingGhost : MonoBehaviour
     {
         private GameObject _sprite;
-        private ResourceNearbyOverlay _resourceGeneratorOverlay;
+        private ResourceNearbyOverlay _resourceNearbyOverlay;
         private void Awake()
         {
             _sprite = transform.Find("sprite").gameObject;
-            _resourceGeneratorOverlay = transform.Find("PF_ResourceNearbyOverlay").GetComponent<ResourceNearbyOverlay>();
+            _resourceNearbyOverlay = transform.Find("PF_ResourceNearbyOverlay").GetComponent<ResourceNearbyOverlay>();
             Hide();
         }
 
@@ -24,11 +24,14 @@ namespace _Scripts.Systems
         private void BuildingManager_OnActiveBuildingTypeChanged(object sender, BuildingManager.OnActiveBuildingTypeChangedEventArgs e)
         {
             if (e.ActiveBuildingType == null)
+            {
                 Hide();
+                _resourceNearbyOverlay.Hide();
+            }
             else
             {
                 Show(e.ActiveBuildingType.sprite);
-                _resourceGeneratorOverlay.Show(e.ActiveBuildingType.resourceGeneratorData);
+                _resourceNearbyOverlay.Show(e.ActiveBuildingType.resourceGeneratorData);
             }
         }
 

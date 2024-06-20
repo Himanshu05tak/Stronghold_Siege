@@ -6,6 +6,8 @@ namespace _Scripts.ScriptableScript
     public class ResourceTypeSo : ScriptableObject
     {
         public string nameString;
+        public string nameShort;
         public Sprite sprite;
+        public string colorHex;
     }
 }

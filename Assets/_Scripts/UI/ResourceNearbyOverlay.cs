@@ -30,7 +30,7 @@ namespace _Scripts.UI
             transform.Find("icon").GetComponent<SpriteRenderer>().sprite = resourceGeneratorData.resourceType.sprite;
         }
         
-        private void Hide()
+        public void Hide()
         {
             gameObject.SetActive(false);
         }

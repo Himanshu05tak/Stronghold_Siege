@@ -1,5 +1,6 @@
 using System;
 using _Scripts.ScriptableScript;
+using _Scripts.UI;
 using _Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -26,13 +27,22 @@ namespace _Scripts.Managers
         private void Update()
         {
             if (!Input.GetMouseButtonDown(0) || EventSystem.current.IsPointerOverGameObject()) return;
-            if (_activeBuildingType != null && CanSpawnBuilding(_activeBuildingType, Utility.GetMouseWorldPosition()))
+            if (_activeBuildingType == null) return;
+            if(CanSpawnBuilding(_activeBuildingType, Utility.GetMouseWorldPosition(),out var errorMessage))
             {
                 if (ResourceManager.Instance.CanAfford(_activeBuildingType.constructionResourceAmounts))
                 {
                     ResourceManager.Instance.SpendResources(_activeBuildingType.constructionResourceAmounts);
                     Instantiate(_activeBuildingType.prefab, Utility.GetMouseWorldPosition(), Quaternion.identity);
                 }
+                else
+                    TooltipUI.Instance.Show("<color=#ffff00>Cannot afford " + _activeBuildingType.GetConstructionResourcesCostString(),
+                        new TooltipUI.TooltipTimer { timer = 2f });
+            }
+            else
+            {
+                TooltipUI.Instance.Show(errorMessage, new TooltipUI.TooltipTimer { timer = 2f });
+
             }
         }
         public void SetBuildingType(BuildingTypeSo buildingType)
@@ -44,14 +54,19 @@ namespace _Scripts.Managers
         }
         public BuildingTypeSo GetActiveBuildingType => _activeBuildingType;
 
-        private bool CanSpawnBuilding(BuildingTypeSo buildingType, Vector3 position)
+        private bool CanSpawnBuilding(BuildingTypeSo buildingType, Vector3 position, out string errorMessage)
         {
             var boxCollider = buildingType.prefab.GetComponent<BoxCollider2D>();
 
             var collider2DArray = Physics2D.OverlapBoxAll(position + (Vector3) boxCollider.offset, boxCollider.size, 0);
 
             var isAreaClear = collider2DArray.Length == 0;
-            if (!isAreaClear) return false;
+            if (!isAreaClear)
+            {
+                errorMessage = "<color=#ff0000>Area is not clear!";
+                return false;
+            }
+
             
             //within minConstructionRadius
             collider2DArray = Physics2D.OverlapCircleAll(position, buildingType.minConstructionRadius);
@@ -63,7 +78,10 @@ namespace _Scripts.Managers
                 //Has a buildingTypeHolder
                 if (buildingTypeHolder.buildingType == buildingType)
                     //There's already a building of this type within the construction radius.
+                {
+                    errorMessage = "<color=#00ff00>Too close to another building of the same type!";
                     return false;
+                }                   
             }
             
             //within maxConstructionRadius
@@ -73,8 +91,11 @@ namespace _Scripts.Managers
             {
                 //Colliders inside the construction radius
                 var buildingTypeHolder = col.GetComponent<BuildingTypeHolder>();
-                if (buildingTypeHolder != null) return true;
+                if (buildingTypeHolder == null) continue;
+                errorMessage = "";
+                return true;
             }
+            errorMessage = "Too far from any other building!";
             return false;
         }
     }

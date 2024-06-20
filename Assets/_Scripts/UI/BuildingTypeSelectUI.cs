@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using _Scripts.Managers;
 using System.Collections.Generic;
 using _Scripts.ScriptableScript;
+using _Scripts.Systems;
 
 namespace _Scripts.UI
 {
@@ -19,10 +21,20 @@ namespace _Scripts.UI
 
         private void Awake()
         {
-            var btnTemplate = GetBtnTemplate(out var buildingTypeList);
+            var btnTemplate = SetupArrowBtnTemplate(out var buildingTypeList, out var index);
+            GeneratingBuildingTypes(buildingTypeList, btnTemplate, index);
+        }
+        private void Start()
+        {
+            BuildingManager.Instance.OnActiveBuildingTypeChanged += BuildingManager_OnActiveBuildingTypeChanged;
+            UpdateActiveBuildingTypeButton();
+        }
+        private Transform SetupArrowBtnTemplate(out BuildingTypeListSo buildingTypeList, out int index)
+        {
+            var btnTemplate = GetBtnTemplate(out buildingTypeList);
             //CloningBuildingTypes(buildingTypeList, btnTemplate);
 
-            var index = 0;
+            index = 0;
             _arrowBtn = Instantiate(btnTemplate, transform);
             _arrowBtn.gameObject.SetActive(true);
 
@@ -31,12 +43,14 @@ namespace _Scripts.UI
             _arrowBtn.Find("image").GetComponent<Image>().sprite = arrowSprite;
             _arrowBtn.Find("image").GetComponent<RectTransform>().sizeDelta = new Vector2(0, MAX_ARROW_ICON_SIZE);
 
-            _arrowBtn.GetComponent<Button>().onClick.AddListener(() =>
-            {
-                BuildingManager.Instance.SetBuildingType(null);
-            });
+            _arrowBtn.GetComponent<Button>().onClick.AddListener(() => { BuildingManager.Instance.SetBuildingType(null); });
 
             index++;
+            return btnTemplate;
+        }
+        
+        private void GeneratingBuildingTypes(BuildingTypeListSo buildingTypeList, Transform btnTemplate, int index)
+        {
             foreach (var buildingType in buildingTypeList.list)
             {
                 if (ignoreBuildingTypes.Contains(buildingType)) continue;
@@ -51,17 +65,14 @@ namespace _Scripts.UI
                 {
                     BuildingManager.Instance.SetBuildingType(buildingType);
                 });
+                var mouseEnterExitEvents = btnTransform.GetComponent<MouseEnterExitEvent>();
+                mouseEnterExitEvents.OnMouseEnter += (sender,e) => { TooltipUI.Instance.Show(buildingType.nameString + "\n" + buildingType.GetConstructionResourcesCostString()); };
+                mouseEnterExitEvents.OnMouseExit += (sender, e) => { TooltipUI.Instance.Hide(); };
+
                 _btnTransformDictionary.Add(buildingType, btnTransform);
                 index++;
             }
         }
-
-        private void Start()
-        {
-            BuildingManager.Instance.OnActiveBuildingTypeChanged += BuildingManager_OnActiveBuildingTypeChanged;
-            UpdateActiveBuildingTypeButton();
-        }
-
         private void BuildingManager_OnActiveBuildingTypeChanged(object sender,
             BuildingManager.OnActiveBuildingTypeChangedEventArgs e)
         {

@@ -1,3 +1,4 @@
+using System.Linq;
 using _Scripts.Data;
 using UnityEngine;
 
@@ -13,5 +14,13 @@ namespace _Scripts.ScriptableScript
         public Sprite sprite;
         public float minConstructionRadius;
         public ResourceAmount[] constructionResourceAmounts;
+
+        public string GetConstructionResourcesCostString()
+        {
+            var infoText = constructionResourceAmounts.Aggregate("", (current, resourceAmount)
+                => current + ("<color=#" + resourceAmount.resourceType.colorHex + ">"
+                              + resourceAmount.resourceType.nameShort + resourceAmount.amount) + "</color> ");
+            return infoText;
+        }
     }
 }
