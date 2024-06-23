@@ -17,6 +17,8 @@ namespace _Scripts.Managers
         {
             public BuildingTypeSo ActiveBuildingType;
         }
+
+        [SerializeField] private Building hqBuilding;
         
         private BuildingTypeSo _activeBuildingType;
         private BuildingTypeListSo _buildingTypeListSo;
@@ -27,9 +29,19 @@ namespace _Scripts.Managers
         }
         private void Update()
         {
+            SetupBuilding();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                var enemySpawnPos = Utility.GetMouseWorldPosition() + Utility.GetRandomDir() * 5f;
+                Enemy.Create(enemySpawnPos);
+            }
+        }
+
+        private void SetupBuilding()
+        {
             if (!Input.GetMouseButtonDown(0) || EventSystem.current.IsPointerOverGameObject()) return;
             if (_activeBuildingType == null) return;
-            if(CanSpawnBuilding(_activeBuildingType, Utility.GetMouseWorldPosition(),out var errorMessage))
+            if (CanSpawnBuilding(_activeBuildingType, Utility.GetMouseWorldPosition(), out var errorMessage))
             {
                 if (ResourceManager.Instance.CanAfford(_activeBuildingType.constructionResourceAmounts))
                 {
@@ -37,15 +49,16 @@ namespace _Scripts.Managers
                     Instantiate(_activeBuildingType.prefab, Utility.GetMouseWorldPosition(), Quaternion.identity);
                 }
                 else
-                    TooltipUI.Instance.Show("<color=#ffff00>Cannot afford " + _activeBuildingType.GetConstructionResourcesCostString(),
+                    TooltipUI.Instance.Show(
+                        "<color=#ffff00>Cannot afford " + _activeBuildingType.GetConstructionResourcesCostString(),
                         new TooltipUI.TooltipTimer { timer = 2f });
             }
             else
             {
                 TooltipUI.Instance.Show(errorMessage, new TooltipUI.TooltipTimer { timer = 2f });
-
             }
         }
+
         public void SetBuildingType(BuildingTypeSo buildingType)
         {
             _activeBuildingType = buildingType;
@@ -99,5 +112,7 @@ namespace _Scripts.Managers
             errorMessage = "Too far from any other building!";
             return false;
         }
+
+        public Building GetHqBuilding() => hqBuilding;
     }
 }

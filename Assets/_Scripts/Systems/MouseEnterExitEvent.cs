@@ -11,13 +11,11 @@ namespace _Scripts.Systems
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            Debug.Log("Enter");
             OnMouseEnter?.Invoke(this,EventArgs.Empty); 
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            Debug.Log("Exit");
             OnMouseExit?.Invoke(this,EventArgs.Empty); 
         }
     }
