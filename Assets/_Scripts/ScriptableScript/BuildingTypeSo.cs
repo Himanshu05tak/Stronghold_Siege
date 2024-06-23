@@ -10,6 +10,7 @@ namespace _Scripts.ScriptableScript
         public string nameString;
         public Transform prefab;
         //public List<ResourceGeneratorData> resourceGeneratorData;
+        public bool hasResourceGeneratorData;
         public ResourceGeneratorData resourceGeneratorData;
         public Sprite sprite;
         public float minConstructionRadius;

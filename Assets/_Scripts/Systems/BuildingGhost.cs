@@ -9,6 +9,7 @@ namespace _Scripts.Systems
     {
         private GameObject _sprite;
         private ResourceNearbyOverlay _resourceNearbyOverlay;
+
         private void Awake()
         {
             _sprite = transform.Find("sprite").gameObject;
@@ -21,7 +22,8 @@ namespace _Scripts.Systems
             BuildingManager.Instance.OnActiveBuildingTypeChanged += BuildingManager_OnActiveBuildingTypeChanged;
         }
 
-        private void BuildingManager_OnActiveBuildingTypeChanged(object sender, BuildingManager.OnActiveBuildingTypeChangedEventArgs e)
+        private void BuildingManager_OnActiveBuildingTypeChanged(object sender,
+            BuildingManager.OnActiveBuildingTypeChangedEventArgs e)
         {
             if (e.ActiveBuildingType == null)
             {
@@ -31,7 +33,14 @@ namespace _Scripts.Systems
             else
             {
                 Show(e.ActiveBuildingType.sprite);
-                _resourceNearbyOverlay.Show(e.ActiveBuildingType.resourceGeneratorData);
+                if (e.ActiveBuildingType.hasResourceGeneratorData)
+                {
+                    _resourceNearbyOverlay.Show(e.ActiveBuildingType.resourceGeneratorData);
+                }
+                else
+                {
+                    _resourceNearbyOverlay.Hide();
+                }
             }
         }
 
@@ -45,7 +54,7 @@ namespace _Scripts.Systems
             _sprite.gameObject.SetActive(true);
             _sprite.GetComponent<SpriteRenderer>().sprite = ghostSprite;
         }
-        
+
         private void Hide()
         {
             _sprite.gameObject.SetActive(false);

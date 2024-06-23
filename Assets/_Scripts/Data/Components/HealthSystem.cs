@@ -5,21 +5,21 @@ namespace _Scripts.Data.Components
 {
     public class HealthSystem : MonoBehaviour
     {
+        [SerializeField] private int healthAmountMax;
         public event EventHandler OnDamaged;
         public event EventHandler OnDied;
         
-        private int _healthAmountMax;
         private int _healthAmount;
 
         private void Awake()
         {
-            _healthAmount = _healthAmountMax;
+            _healthAmount = healthAmountMax;
         }
 
         public void Damage(int damageAmount)
         {
             _healthAmount -= damageAmount;
-            _healthAmount = Mathf.Clamp(_healthAmount, 0, _healthAmountMax);
+            _healthAmount = Mathf.Clamp(_healthAmount, 0, healthAmountMax);
             
             OnDamaged?.Invoke(this,EventArgs.Empty);
             if(IsDead())
@@ -33,7 +33,7 @@ namespace _Scripts.Data.Components
 
         public bool IsFullHealth()
         {
-            return _healthAmount == _healthAmountMax;
+            return _healthAmount == healthAmountMax;
         }
 
         public int GetHealthAmount()
@@ -43,12 +43,12 @@ namespace _Scripts.Data.Components
 
         public float GetHealthAmountNormalized()
         {
-            return (float)_healthAmount / _healthAmountMax;
+            return (float)_healthAmount / healthAmountMax;
         }
 
-        public void SetHealthAmountMax(int healthAmountMax,bool updateHealthAmount)
+        public void SetHealthAmountMax(int healthAmountMax, bool updateHealthAmount)
         {
-            _healthAmountMax = healthAmountMax;
+            this.healthAmountMax = healthAmountMax;
             if (updateHealthAmount)
                 _healthAmount = healthAmountMax;
         }

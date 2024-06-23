@@ -1,16 +1,19 @@
+using System;
 using UnityEngine;
 using _Scripts.Managers;
 using _Scripts.Data.Components;
+using Random = UnityEngine.Random;
 
 namespace _Scripts
 {
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private float moveSpeed;
+        private const float LOOK_FOR_TARGET_TIMER_MAX = 0.2f;
         private Transform _targetTransform;
         private Rigidbody2D _rigidbody2D;
         private float _lookForTargetTimer;
-        private const float LOOK_FOR_TARGET_TIMER_MAX = 0.2f;
+        private HealthSystem _healthSystem;
 
         public static Enemy Create(Vector3 pos)
         {
@@ -24,6 +27,13 @@ namespace _Scripts
             _targetTransform = BuildingManager.Instance.GetHqBuilding().transform;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _lookForTargetTimer = Random.Range(0f, LOOK_FOR_TARGET_TIMER_MAX);
+            _healthSystem = GetComponent<HealthSystem>();
+            _healthSystem.OnDied += HealthSystem_OnDied;
+        }
+
+        private void HealthSystem_OnDied(object sender, EventArgs e)
+        {
+            Destroy(gameObject);
         }
 
         private void Update()

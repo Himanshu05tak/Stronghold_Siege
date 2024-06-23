@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
-using _Scripts.ScriptableScript;
 using UnityEngine;
+using _Scripts.ScriptableScript;
+using System.Collections.Generic;
 
 namespace _Scripts.Managers
 {
@@ -10,6 +10,7 @@ namespace _Scripts.Managers
         public static ResourceManager Instance { get; private set; }
         private Dictionary<ResourceTypeSo, int> _resourceAmountDictionary;
 
+        [SerializeField] private List<ResourceAmount> startingResourceTypes;
         public event EventHandler OnResourceAmountChanged;
         private void Awake()
         {
@@ -21,6 +22,11 @@ namespace _Scripts.Managers
             foreach (var resourceType in resourceTypeList.list)
             {
                 _resourceAmountDictionary[resourceType] = 0;
+            }
+
+            foreach (var resource in startingResourceTypes)
+            {
+                AddResource(resource.resourceType,resource.amount); 
             }
         }
         public void AddResource(ResourceTypeSo resourceType, int amount)

@@ -18,5 +18,12 @@ namespace _Scripts.Utilities
         {
             return new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         }
+
+        public static float GetAngelFromVector(Vector3 vector)
+        {
+            var angleInRadian = Mathf.Atan2(vector.y, vector.x);
+            var angleInDegree = angleInRadian * Mathf.Rad2Deg;
+            return angleInDegree;
+        }
     }
 }
