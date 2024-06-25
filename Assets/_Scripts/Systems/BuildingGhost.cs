@@ -46,7 +46,7 @@ namespace _Scripts.Systems
 
         private void Update()
         {
-            transform.position = Utility.GetMouseWorldPosition();
+            transform.position = UtilsClass.GetMouseWorldPosition();
         }
 
         private void Show(Sprite ghostSprite)

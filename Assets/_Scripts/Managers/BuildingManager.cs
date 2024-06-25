@@ -30,23 +30,18 @@ namespace _Scripts.Managers
         private void Update()
         {
             SetupBuilding();
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                var enemySpawnPos = Utility.GetMouseWorldPosition() + Utility.GetRandomDir() * 5f;
-                Enemy.Create(enemySpawnPos);
-            }
         }
 
         private void SetupBuilding()
         {
             if (!Input.GetMouseButtonDown(0) || EventSystem.current.IsPointerOverGameObject()) return;
             if (_activeBuildingType == null) return;
-            if (CanSpawnBuilding(_activeBuildingType, Utility.GetMouseWorldPosition(), out var errorMessage))
+            if (CanSpawnBuilding(_activeBuildingType, UtilsClass.GetMouseWorldPosition(), out var errorMessage))
             {
                 if (ResourceManager.Instance.CanAfford(_activeBuildingType.constructionResourceAmounts))
                 {
                     ResourceManager.Instance.SpendResources(_activeBuildingType.constructionResourceAmounts);
-                    Instantiate(_activeBuildingType.prefab, Utility.GetMouseWorldPosition(), Quaternion.identity);
+                    Instantiate(_activeBuildingType.prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
                 }
                 else
                     TooltipUI.Instance.Show(

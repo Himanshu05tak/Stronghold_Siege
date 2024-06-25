@@ -27,7 +27,7 @@ namespace _Scripts.Utilities
 
         private void HandleZoom()
         {
-            _targetOrthographicSize += Input.mouseScrollDelta.y * zoomSpeed;
+            _targetOrthographicSize += -Input.mouseScrollDelta.y * zoomSpeed;
             _targetOrthographicSize = Mathf.Clamp(_targetOrthographicSize, minZoom, maxZoom);
             _orthographicSize = Mathf.Lerp(_orthographicSize, _targetOrthographicSize, Time.deltaTime * zoomSpeed);
             if (virtualCamera)

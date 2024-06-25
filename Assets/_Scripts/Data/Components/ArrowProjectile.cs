@@ -32,7 +32,7 @@ namespace _Scripts.Data.Components
             
             _lastMoveDir = moveDirection;
             transform.position += moveDirection * (moveSpeed * Time.deltaTime);
-            transform.eulerAngles = new Vector3(0, 0, Utility.GetAngelFromVector(moveDirection));
+            transform.eulerAngles = new Vector3(0, 0, UtilsClass.GetAngelFromVector(moveDirection));
 
             _timeToDie -= Time.deltaTime;
             if (_timeToDie <= 0f)

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace _Scripts.Utilities
 {
-    public static class Utility
+    public static class UtilsClass
     {
         private static Camera _mainCamera;
         
