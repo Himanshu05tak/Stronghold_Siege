@@ -1,10 +1,10 @@
 using System;
-using _Scripts.Data.Components;
-using _Scripts.ScriptableScript;
+using UnityEngine;
 using _Scripts.UI;
 using _Scripts.Utilities;
-using UnityEngine;
+using _Scripts.Data.Components;
 using UnityEngine.EventSystems;
+using _Scripts.ScriptableScript;
 
 namespace _Scripts.Managers
 {
@@ -41,7 +41,8 @@ namespace _Scripts.Managers
                 if (ResourceManager.Instance.CanAfford(_activeBuildingType.constructionResourceAmounts))
                 {
                     ResourceManager.Instance.SpendResources(_activeBuildingType.constructionResourceAmounts);
-                    Instantiate(_activeBuildingType.prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
+                    BuildingConstruction.Create(UtilsClass.GetMouseWorldPosition(),_activeBuildingType);
+                    //Instantiate(_activeBuildingType.prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
                 }
                 else
                     TooltipUI.Instance.Show(
@@ -49,9 +50,7 @@ namespace _Scripts.Managers
                         new TooltipUI.TooltipTimer { timer = 2f });
             }
             else
-            {
                 TooltipUI.Instance.Show(errorMessage, new TooltipUI.TooltipTimer { timer = 2f });
-            }
         }
 
         public void SetBuildingType(BuildingTypeSo buildingType)
