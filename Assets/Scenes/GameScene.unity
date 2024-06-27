@@ -1268,6 +1268,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5054188482230080488, guid: e2c9f6bef00ec9a409867233a5b2d6a1, type: 3}
+      propertyPath: healthAmountMax
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6172614336453358279, guid: e2c9f6bef00ec9a409867233a5b2d6a1, type: 3}
       propertyPath: m_Name
       value: PF_HQ

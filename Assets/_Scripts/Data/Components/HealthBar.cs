@@ -30,7 +30,7 @@ namespace _Scripts.Data.Components
 
         private void UpdateBar()
         {
-            _barTransform.localScale = new Vector3(healthSystem.GetHealthAmountNormalized()*_localScale.x, 1, 1);
+            _barTransform.localScale = new Vector3(healthSystem.GetHealthAmountNormalized() *_localScale.x, 1, 1);
         }
 
         private void UpdateHealthBarVisible()
