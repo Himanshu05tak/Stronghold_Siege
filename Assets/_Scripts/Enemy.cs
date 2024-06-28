@@ -21,10 +21,12 @@ namespace _Scripts
             var enemyTransform = Instantiate(pfEnemy, pos, Quaternion.identity);
             var enemy = enemyTransform.GetComponent<Enemy>();
             return enemy;
-        }       
+        }
+
         private void Start()
         {
-            _targetTransform = BuildingManager.Instance.GetHqBuilding().transform;
+            if (BuildingManager.Instance.GetHqBuilding() != null)
+                _targetTransform = BuildingManager.Instance.GetHqBuilding().transform;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _lookForTargetTimer = Random.Range(0f, LOOK_FOR_TARGET_TIMER_MAX);
             _healthSystem = GetComponent<HealthSystem>();
@@ -41,6 +43,7 @@ namespace _Scripts
             HandleMovement();
             HandleTargetTimer();
         }
+
         private void HandleMovement()
         {
             if (_targetTransform != null)
@@ -51,6 +54,7 @@ namespace _Scripts
             else
                 _rigidbody2D.velocity = Vector2.zero;
         }
+
         private void HandleTargetTimer()
         {
             _lookForTargetTimer -= Time.deltaTime;
@@ -58,7 +62,7 @@ namespace _Scripts
             _lookForTargetTimer += LOOK_FOR_TARGET_TIMER_MAX;
             LookForTargets();
         }
-        
+
         private void OnCollisionEnter2D(Collision2D other)
         {
             var building = other.gameObject.GetComponent<Building>();
@@ -100,7 +104,8 @@ namespace _Scripts
             if (_targetTransform == null)
             {
                 //Found no targets within range!
-                _targetTransform = BuildingManager.Instance.GetHqBuilding().transform;
+                if (BuildingManager.Instance.GetHqBuilding() != null)
+                    _targetTransform = BuildingManager.Instance.GetHqBuilding().transform;
             }
         }
     }

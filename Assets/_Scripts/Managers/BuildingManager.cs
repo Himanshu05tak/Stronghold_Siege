@@ -27,6 +27,17 @@ namespace _Scripts.Managers
             Instance = this;
             _buildingTypeListSo = Resources.Load<BuildingTypeListSo>(nameof(BuildingTypeListSo));
         }
+
+        private void Start()
+        {
+            hqBuilding.GetComponent<HealthSystem>().OnDied += HQ_OnDied;
+        }
+
+        private void HQ_OnDied(object sender, EventArgs e)
+        {
+            GameOverUI.Instance.Show();
+        }
+
         private void Update()
         {
             SetupBuilding();

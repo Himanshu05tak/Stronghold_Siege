@@ -8,6 +8,7 @@ namespace _Scripts.Managers
 {
     public class EnemyWaveManager : MonoBehaviour
     {
+        public static EnemyWaveManager Instance { get; private set; }
         public event Action OnWaveNumberChanged;
         
         private enum State
@@ -30,6 +31,11 @@ namespace _Scripts.Managers
         private const float SPAWN_TIMER = 10f;
         private const float MAX_NEXT_SPAWN_TIMER = .2f;
         private const float MAX_NEXT_SPAWN_RANGE = 5f;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {
