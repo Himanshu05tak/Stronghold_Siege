@@ -31,11 +31,18 @@ namespace _Scripts
             _lookForTargetTimer = Random.Range(0f, LOOK_FOR_TARGET_TIMER_MAX);
             _healthSystem = GetComponent<HealthSystem>();
             _healthSystem.OnDied += HealthSystem_OnDied;
+            _healthSystem.OnDamaged += HealthSystem_OnDamaged;
+        }
+
+        private void HealthSystem_OnDamaged(object sender, EventArgs e)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyHit);
         }
 
         private void HealthSystem_OnDied(object sender, EventArgs e)
         {
             Destroy(gameObject);
+            SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyDie);
         }
 
         private void Update()

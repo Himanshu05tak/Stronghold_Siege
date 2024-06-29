@@ -36,6 +36,7 @@ namespace _Scripts.Managers
         private void HQ_OnDied(object sender, EventArgs e)
         {
             GameOverUI.Instance.Show();
+            SoundManager.Instance.PlaySound(SoundManager.Sound.GameOver);
         }
 
         private void Update()
@@ -53,6 +54,7 @@ namespace _Scripts.Managers
                 {
                     ResourceManager.Instance.SpendResources(_activeBuildingType.constructionResourceAmounts);
                     BuildingConstruction.Create(UtilsClass.GetMouseWorldPosition(),_activeBuildingType);
+                    SoundManager.Instance.PlaySound(SoundManager.Sound.BuildingPlaced);
                     //Instantiate(_activeBuildingType.prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
                 }
                 else

@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Managers;
 using UnityEngine;
 using _Scripts.ScriptableScript;
 
@@ -41,11 +42,14 @@ namespace _Scripts.Data.Components
         private void HealthSystem_OnDamaged(object sender, EventArgs e)
         {
             ShowBuildingRepairBtn();
+            SoundManager.Instance.PlaySound(SoundManager.Sound.BuildingDamaged);
+
         }
 
         private void HealthSystem_OnDied(object sender, EventArgs e)
         {
             Destroy(gameObject);
+            SoundManager.Instance.PlaySound(SoundManager.Sound.BuildingDestroyed);
         }
 
         private void OnMouseEnter()

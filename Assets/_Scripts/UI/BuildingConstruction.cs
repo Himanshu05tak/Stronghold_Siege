@@ -1,5 +1,6 @@
 using UnityEngine;
 using _Scripts.Data.Components;
+using _Scripts.Managers;
 using _Scripts.ScriptableScript;
 
 namespace _Scripts.UI
@@ -39,6 +40,7 @@ namespace _Scripts.UI
             if (!(_constructionTimer <= 0)) return;
             Debug.Log("Ding!");
             Instantiate(_buildingType.prefab,transform.position,Quaternion.identity);
+            SoundManager.Instance.PlaySound(SoundManager.Sound.BuildingPlaced);
             Destroy(gameObject);
         }
         private void SetBuildingType(BuildingTypeSo buildingType)

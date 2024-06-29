@@ -13,6 +13,12 @@ namespace _Scripts.UI
 
         private void Awake()
         {
+            OnRepairClick();
+            Hide();
+        }
+        
+        private void OnRepairClick()
+        {
             transform.Find("button").GetComponent<Button>().onClick.AddListener(() =>
             {
                 var missingHealth = healthSystem.GetHealthAmountMax() - healthSystem.GetHealthAmount();
@@ -20,7 +26,7 @@ namespace _Scripts.UI
 
                 var resourceAmountCost = new ResourceAmount[]
                 {
-                    new ResourceAmount() { resourceType = goldResourceType, amount = repairCost }
+                    new() { resourceType = goldResourceType, amount = repairCost }
                 };
                 if (ResourceManager.Instance.CanAfford(resourceAmountCost))
                 {
@@ -34,6 +40,20 @@ namespace _Scripts.UI
                     TooltipUI.Instance.Show("Cannot afford repair cost!", new TooltipUI.TooltipTimer() { timer = 2f });
                 }
             });
+        }
+
+        public void Show()
+        {
+            SetActive(true);    
+        }
+        public void Hide()
+        {
+            SetActive(false);    
+        }
+
+        private void SetActive(bool isActive)
+        {
+            gameObject.SetActive(isActive);
         }
     }
 }
