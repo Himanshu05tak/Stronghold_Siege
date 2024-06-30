@@ -9,6 +9,7 @@ namespace _Scripts.Data.Components
         public event EventHandler OnDamaged;
         public event EventHandler OnDied;
         public event EventHandler OnHealed;
+        public event EventHandler OnHealthAmountMaxChanged;
 
         private int _healthAmount;
 
@@ -65,6 +66,7 @@ namespace _Scripts.Data.Components
             this.healthAmountMax = healthAmountMax;
             if (updateHealthAmount)
                 _healthAmount = healthAmountMax;
+            OnHealthAmountMaxChanged?.Invoke(this,EventArgs.Empty);
         }
     }
 }

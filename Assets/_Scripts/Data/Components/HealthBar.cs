@@ -9,6 +9,7 @@ namespace _Scripts.Data.Components
 
         private Transform _barTransform;
         private Vector3 _localScale;
+        private Transform _separatorContainer;
         private void Awake()
         {
             _barTransform = transform.Find("bar");
@@ -17,8 +18,12 @@ namespace _Scripts.Data.Components
 
         private void Start()
         {
+            _separatorContainer = transform.Find("separatorContainer");
+            ConstructHealthBarSeparators();
+            
             healthSystem.OnDamaged += HealthSystem_OnDamaged;
             healthSystem.OnHealed += HealthSystem_OnHealed;
+            healthSystem.OnHealthAmountMaxChanged += HealthSystem_OnHealthAmountMaxChanged;
             UpdateBar();
             UpdateHealthBarVisible();
         }
@@ -35,6 +40,36 @@ namespace _Scripts.Data.Components
             UpdateHealthBarVisible();
         }
 
+        private void HealthSystem_OnHealthAmountMaxChanged(object sender, EventArgs e)
+        {
+            ConstructHealthBarSeparators();
+        }
+
+        private void ConstructHealthBarSeparators()
+        {
+            var separatorTemplate = _separatorContainer.Find("separatorTemplate");
+            separatorTemplate.gameObject.SetActive(false);
+
+            foreach (Transform separatorTransform in _separatorContainer)
+            {
+                if(separatorTransform== separatorTemplate) continue;
+                Destroy(separatorTransform.gameObject);
+            }
+            const float barSize = 3f;
+            const int healthAmountPerSeparator = 10;
+            var barOneHealthAmountSize = barSize / healthSystem.GetHealthAmountMax();
+            var healthSeparatorCount = Mathf.FloorToInt(healthSystem.GetHealthAmountMax() / healthAmountPerSeparator);
+
+            Debug.Log($"healthSeparatorCount {healthSeparatorCount}");
+            for (var i = 1; i < healthSeparatorCount; i++)
+            {
+                var separatorTransform = Instantiate(separatorTemplate, _separatorContainer);
+                separatorTransform.gameObject.SetActive(true);
+                separatorTransform.localPosition =
+                    new Vector3(barOneHealthAmountSize * i * healthAmountPerSeparator, 0, 0);
+            }
+
+        }
         private void UpdateBar()
         {
             _barTransform.localScale = new Vector3(healthSystem.GetHealthAmountNormalized() *_localScale.x, 1, 1);
@@ -43,6 +78,7 @@ namespace _Scripts.Data.Components
         private void UpdateHealthBarVisible()
         {
             gameObject.SetActive(!healthSystem.IsFullHealth());
+            gameObject.SetActive(true);
         }
     }
 }
