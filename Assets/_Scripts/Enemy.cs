@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using _Scripts.Managers;
 using _Scripts.Data.Components;
+using Unity.Mathematics;
 using Random = UnityEngine.Random;
 
 namespace _Scripts
@@ -41,8 +42,9 @@ namespace _Scripts
 
         private void HealthSystem_OnDied(object sender, EventArgs e)
         {
-            Destroy(gameObject);
             SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyDie);
+            Instantiate(Resources.Load<Transform>("PF_EnemyDieParticles"),transform.position,Quaternion.identity);
+            Destroy(gameObject);
         }
 
         private void Update()
@@ -77,8 +79,8 @@ namespace _Scripts
             {
                 var healthSystem = building.GetComponent<HealthSystem>();
                 healthSystem.Damage(10);
-                Destroy(gameObject);
             }
+            this._healthSystem.Damage(999);
         }
 
         //Figure out which one is closer

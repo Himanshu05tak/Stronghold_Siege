@@ -32,6 +32,7 @@ namespace _Scripts.UI
             _spriteRenderer =  transform.Find("sprite").GetComponent<SpriteRenderer>();
             _buildingTypeHolder = GetComponent<BuildingTypeHolder>();
             _constructionMaterial = _spriteRenderer.material;
+            Instantiate(Resources.Load<Transform>("PF_BuildingPlacedParticles"),transform.position,Quaternion.identity);
         }
         private void Update()
         {
@@ -40,6 +41,7 @@ namespace _Scripts.UI
             if (!(_constructionTimer <= 0)) return;
             Debug.Log("Ding!");
             Instantiate(_buildingType.prefab,transform.position,Quaternion.identity);
+            Instantiate(Resources.Load<Transform>("PF_BuildingPlacedParticles"),transform.position,Quaternion.identity);
             SoundManager.Instance.PlaySound(SoundManager.Sound.BuildingPlaced);
             Destroy(gameObject);
         }

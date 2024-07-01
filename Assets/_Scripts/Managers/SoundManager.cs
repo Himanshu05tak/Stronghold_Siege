@@ -20,11 +20,11 @@ namespace _Scripts.Managers
         }
         private AudioSource _audioSource;
         private Dictionary<Sound, AudioClip> _soundAudioClipDictionary;
-
+        
+        private const string SOUND = "SOUND_VOLUME";
         private void Awake()
         {
             Instance = this;
-            _volume = 0.5f;
             _audioSource = GetComponent<AudioSource>();
             _soundAudioClipDictionary = new Dictionary<Sound, AudioClip>();
             
@@ -32,6 +32,8 @@ namespace _Scripts.Managers
             {
                 _soundAudioClipDictionary[sound] = Resources.Load<AudioClip>(sound.ToString());
             }
+
+            _volume =  PlayerPrefs.GetFloat(SOUND, 0.5f);
         }
         public void PlaySound(Sound sound)
         {
@@ -42,12 +44,14 @@ namespace _Scripts.Managers
         {
             _volume += .1f;
             _volume = Mathf.Clamp01(_volume);
+            PlayerPrefs.SetFloat(SOUND, _volume);
         }
         
         public void DecreaseVolume()
         {
             _volume -= .1f;
             _volume = Mathf.Clamp01(_volume);
+            PlayerPrefs.SetFloat(SOUND, _volume);
         }
         public float GetVolume()
         {

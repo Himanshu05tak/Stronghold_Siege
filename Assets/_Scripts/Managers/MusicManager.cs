@@ -8,11 +8,13 @@ namespace _Scripts.Managers
         private AudioSource _audioSource;
         private float _volume;
         
+        private const string MUSIC = "MUSIC_VOLUME";
+
         private void Awake()
         {
             Instance = this;
             _audioSource = GetComponent<AudioSource>();
-            _volume = 0.5f;
+            _volume = PlayerPrefs.GetFloat(MUSIC, 0.5f);
             _audioSource.volume = _volume;
         }
 
@@ -21,6 +23,7 @@ namespace _Scripts.Managers
             _volume += .1f;
             _volume = Mathf.Clamp01(_volume);
             _audioSource.volume = _volume;
+            PlayerPrefs.SetFloat(MUSIC,_volume);
         }
         
         public void DecreaseVolume()
@@ -28,6 +31,7 @@ namespace _Scripts.Managers
             _volume -= .1f;
             _volume = Mathf.Clamp01(_volume);
             _audioSource.volume = _volume;
+            PlayerPrefs.SetFloat(MUSIC,_volume);
         }
         public float GetVolume()
         {

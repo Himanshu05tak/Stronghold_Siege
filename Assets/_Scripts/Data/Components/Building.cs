@@ -48,6 +48,7 @@ namespace _Scripts.Data.Components
 
         private void HealthSystem_OnDied(object sender, EventArgs e)
         {
+            Instantiate(Resources.Load<Transform>("PF_BuildingDestroyedParticles"),transform.position,Quaternion.identity);
             Destroy(gameObject);
             SoundManager.Instance.PlaySound(SoundManager.Sound.BuildingDestroyed);
         }

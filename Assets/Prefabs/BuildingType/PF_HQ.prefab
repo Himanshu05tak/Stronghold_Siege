@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2977eeb88f174a147899f27dd9726c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootTimerMax: 0.25
+  shootTimerMax: 0.2
   targetMaxRadius: 20
 --- !u!1 &8654576488904243076
 GameObject:
