@@ -17,7 +17,7 @@ namespace _Scripts.UI
         private void Update()
         {
             var nearbyResourceAmount =
-                ResourceGenerator.GetNearbyResourceAmount(_resourceGeneratorData, transform.position);
+                ResourceGenerator.GetNearbyResourceAmount(_resourceGeneratorData, transform.position - transform.localPosition);
             var percent = Mathf.RoundToInt((float)nearbyResourceAmount / _resourceGeneratorData.maxResourceAmount*100f);
             transform.Find("text").GetComponent<TextMeshPro>().SetText(percent + "%");
         }

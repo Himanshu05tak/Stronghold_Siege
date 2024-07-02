@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using _Scripts.Managers;
 using _Scripts.Data.Components;
+using _Scripts.Effects;
+using _Scripts.Utilities;
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
 
@@ -38,11 +40,14 @@ namespace _Scripts
         private void HealthSystem_OnDamaged(object sender, EventArgs e)
         {
             SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyHit);
+            CameraShake.Instance.ShakeCamera(5f,.1f);
         }
 
         private void HealthSystem_OnDied(object sender, EventArgs e)
         {
             SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyDie);
+            CameraShake.Instance.ShakeCamera(7f,.15f);
+            ChromaticAberrationEffect.Instance.SetWeight(.5f);
             Instantiate(Resources.Load<Transform>("PF_EnemyDieParticles"),transform.position,Quaternion.identity);
             Destroy(gameObject);
         }

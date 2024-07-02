@@ -21,11 +21,9 @@ namespace _Scripts.Managers
         [SerializeField] private Building hqBuilding;
         
         private BuildingTypeSo _activeBuildingType;
-        private BuildingTypeListSo _buildingTypeListSo;
         private void Awake()
         {
             Instance = this;
-            _buildingTypeListSo = Resources.Load<BuildingTypeListSo>(nameof(BuildingTypeListSo));
         }
 
         private void Start()
@@ -103,6 +101,17 @@ namespace _Scripts.Managers
                     errorMessage = "<color=#00ff00>Too close to another building of the same type!";
                     return false;
                 }                   
+            }
+
+            if (buildingType.hasResourceGeneratorData)
+            {
+                var resourceGeneratorData = buildingType.resourceGeneratorData;
+                var nearbyResourceAmount = ResourceGenerator.GetNearbyResourceAmount(resourceGeneratorData, position);
+                if (nearbyResourceAmount == 0)
+                {
+                    errorMessage = "There are no nearby Resource Nodes!";
+                    return false;
+                }
             }
             
             //within maxConstructionRadius

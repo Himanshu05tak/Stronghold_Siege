@@ -60,7 +60,6 @@ namespace _Scripts.Data.Components
             var barOneHealthAmountSize = barSize / healthSystem.GetHealthAmountMax();
             var healthSeparatorCount = Mathf.FloorToInt(healthSystem.GetHealthAmountMax() / healthAmountPerSeparator);
 
-            Debug.Log($"healthSeparatorCount {healthSeparatorCount}");
             for (var i = 1; i < healthSeparatorCount; i++)
             {
                 var separatorTransform = Instantiate(separatorTemplate, _separatorContainer);

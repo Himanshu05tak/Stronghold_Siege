@@ -1,7 +1,9 @@
 using System;
+using _Scripts.Effects;
 using _Scripts.Managers;
 using UnityEngine;
 using _Scripts.ScriptableScript;
+using _Scripts.Utilities;
 
 namespace _Scripts.Data.Components
 {
@@ -43,7 +45,8 @@ namespace _Scripts.Data.Components
         {
             ShowBuildingRepairBtn();
             SoundManager.Instance.PlaySound(SoundManager.Sound.BuildingDamaged);
-
+            CameraShake.Instance.ShakeCamera(7f,.15f);
+            ChromaticAberrationEffect.Instance.SetWeight(1f);
         }
 
         private void HealthSystem_OnDied(object sender, EventArgs e)
@@ -51,6 +54,7 @@ namespace _Scripts.Data.Components
             Instantiate(Resources.Load<Transform>("PF_BuildingDestroyedParticles"),transform.position,Quaternion.identity);
             Destroy(gameObject);
             SoundManager.Instance.PlaySound(SoundManager.Sound.BuildingDestroyed);
+            CameraShake.Instance.ShakeCamera(10f,.2f);
         }
 
         private void OnMouseEnter()
