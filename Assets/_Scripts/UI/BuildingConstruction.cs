@@ -1,3 +1,4 @@
+using _Scripts.Data;
 using UnityEngine;
 using _Scripts.Data.Components;
 using _Scripts.Managers;
@@ -9,8 +10,8 @@ namespace _Scripts.UI
     {
         public static BuildingConstruction Create(Vector3 position, BuildingTypeSo buildingType)
         {
-            var pfBuildingConstruction = Resources.Load<Transform>("PF_BuildingConstruction");
-            var buildingConstructionTransform = Instantiate(pfBuildingConstruction, position, Quaternion.identity);
+           
+            var buildingConstructionTransform = Instantiate(GameAssets.Instance.GetBuildingConstruction, position, Quaternion.identity);
 
             var buildingConstruction = buildingConstructionTransform.GetComponent<BuildingConstruction>();
             buildingConstruction.SetBuildingType( buildingType);
@@ -32,16 +33,15 @@ namespace _Scripts.UI
             _spriteRenderer =  transform.Find("sprite").GetComponent<SpriteRenderer>();
             _buildingTypeHolder = GetComponent<BuildingTypeHolder>();
             _constructionMaterial = _spriteRenderer.material;
-            Instantiate(Resources.Load<Transform>("PF_BuildingPlacedParticles"),transform.position,Quaternion.identity);
+            Instantiate(GameAssets.Instance.GetBuildingPlacedParticle,transform.position,Quaternion.identity);
         }
         private void Update()
         {
             _constructionTimer -= Time.deltaTime;
             _constructionMaterial.SetFloat(Progress, GetConstructionTimerNormalized());
             if (!(_constructionTimer <= 0)) return;
-            Debug.Log("Ding!");
             Instantiate(_buildingType.prefab,transform.position,Quaternion.identity);
-            Instantiate(Resources.Load<Transform>("PF_BuildingPlacedParticles"),transform.position,Quaternion.identity);
+            Instantiate(GameAssets.Instance.GetBuildingPlacedParticle,transform.position,Quaternion.identity);
             SoundManager.Instance.PlaySound(SoundManager.Sound.BuildingPlaced);
             Destroy(gameObject);
         }

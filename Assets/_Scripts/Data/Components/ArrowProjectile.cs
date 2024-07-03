@@ -7,8 +7,7 @@ namespace _Scripts.Data.Components
     {
         public static ArrowProjectile Create(Vector3 position, Enemy enemy)
         {
-            var pfArrowProjectile = Resources.Load<Transform>("PF_ArrowProjectile");
-            var arrowTransform = Instantiate(pfArrowProjectile, position, Quaternion.identity);
+            var arrowTransform = Instantiate(GameAssets.Instance.GetProjectilePrefab, position, Quaternion.identity);
             var arrowProjectile = arrowTransform.GetComponent<ArrowProjectile>();
             arrowProjectile.SetTarget(enemy);
             return arrowProjectile;

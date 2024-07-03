@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Data;
 using UnityEngine;
 using _Scripts.Managers;
 using _Scripts.Data.Components;
@@ -20,8 +21,7 @@ namespace _Scripts
 
         public static Enemy Create(Vector3 pos)
         {
-            var pfEnemy = Resources.Load<Transform>("PF_Enemy");
-            var enemyTransform = Instantiate(pfEnemy, pos, Quaternion.identity);
+            var enemyTransform = Instantiate(GameAssets.Instance.GetEnemyPrefab, pos, Quaternion.identity);
             var enemy = enemyTransform.GetComponent<Enemy>();
             return enemy;
         }
@@ -48,7 +48,7 @@ namespace _Scripts
             SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyDie);
             CameraShake.Instance.ShakeCamera(7f,.15f);
             ChromaticAberrationEffect.Instance.SetWeight(.5f);
-            Instantiate(Resources.Load<Transform>("PF_EnemyDieParticles"),transform.position,Quaternion.identity);
+            Instantiate(GameAssets.Instance.GetEnemyDieParticle,transform.position,Quaternion.identity);
             Destroy(gameObject);
         }
 
