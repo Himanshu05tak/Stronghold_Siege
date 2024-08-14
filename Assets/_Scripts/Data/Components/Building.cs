@@ -3,7 +3,6 @@ using _Scripts.Effects;
 using _Scripts.Managers;
 using UnityEngine;
 using _Scripts.ScriptableScript;
-using _Scripts.Utilities;
 
 namespace _Scripts.Data.Components
 {

@@ -1,8 +1,8 @@
-using System;
-using _Scripts.Managers;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using _Scripts.Managers;
 
 namespace _Scripts.UI
 {
@@ -32,7 +32,7 @@ namespace _Scripts.UI
         {
             gameObject.SetActive(true);
             
-            transform.Find("wavesSurvivedText").GetComponent<TextMeshProUGUI>().SetText("You Survived " + EnemyWaveManager.Instance.GetWaveNumber() + "Waves!");
+            transform.Find("wavesSurvivedText").GetComponent<TextMeshProUGUI>().SetText("You Survived " + EnemyWaveManager.Instance.GetWaveNumber() + " Waves!");
 
         }
         private void Hide()

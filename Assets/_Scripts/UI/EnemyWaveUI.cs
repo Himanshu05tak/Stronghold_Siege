@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using _Scripts.Managers;
 using _Scripts.Utilities;
 
@@ -8,6 +9,7 @@ namespace _Scripts.UI
     public class EnemyWaveUI : MonoBehaviour
     {
         [SerializeField] private EnemyWaveManager enemyWaveManager;
+        [SerializeField] private Image waveImageBar;
         
         private TextMeshProUGUI _waveNumberText;
         private TextMeshProUGUI _waveMessageText;
@@ -16,11 +18,12 @@ namespace _Scripts.UI
         private Camera _mainCamera;
 
         private const float OFFSET = 300f;
-        //private const float  = 1.5f;
+        private const float MAX_WAIT_TIME= 10f;
+     
         private void Awake()
         {
-            _waveNumberText = transform.Find("waveNumberText").GetComponent<TextMeshProUGUI>();
-            _waveMessageText = transform.Find("waveMessageText").GetComponent<TextMeshProUGUI>();
+            waveImageBar = waveImageBar.GetComponent<Image>();
+            _waveNumberText = transform.Find("currentWaveNumberText").GetComponent<TextMeshProUGUI>();
             _enemyWaveSpawnPositionIndicator = transform.Find("enemyWaveSpawnPositionIndicator").GetComponentInChildren<RectTransform>();
             _enemyClosestPositionIndicator = transform.Find("enemyClosestSpawnPosition").GetComponentInChildren<RectTransform>();
         }
@@ -29,12 +32,12 @@ namespace _Scripts.UI
         {
             _mainCamera = Camera.main;
             enemyWaveManager.OnWaveNumberChanged += EnemyWaveManager_OnWaveNumberChanged;
-            SetWaveNumberText("Wave " + enemyWaveManager.GetWaveNumber());
+            SetWaveNumberText(enemyWaveManager.GetWaveNumber().ToString());
         }
 
         private void EnemyWaveManager_OnWaveNumberChanged()
         {
-            SetWaveNumberText("Wave " + enemyWaveManager.GetWaveNumber());
+            SetWaveNumberText(enemyWaveManager.GetWaveNumber().ToString());
         }
 
         private void Update()
@@ -47,10 +50,7 @@ namespace _Scripts.UI
         private void HandleNextWaveMessage()
         {
             var nextWaveSpawnTimer = enemyWaveManager.GetNextWaveSpawnTimer();
-            if (nextWaveSpawnTimer <= 0f)
-                SetMessageText("");
-            else
-                SetMessageText("Next Wave in " + nextWaveSpawnTimer.ToString("F1") + "s");
+            waveImageBar.fillAmount = nextWaveSpawnTimer/MAX_WAIT_TIME;
         }
        
 
@@ -107,13 +107,6 @@ namespace _Scripts.UI
                 //No enemies Alive
                 _enemyClosestPositionIndicator.gameObject.SetActive(false);
             }
-        }
-
-        
-
-        private void SetMessageText(string message)
-        {
-            _waveMessageText.SetText(message);
         }
         
         private void SetWaveNumberText(string message)

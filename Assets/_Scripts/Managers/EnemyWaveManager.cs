@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using _Scripts.Utilities;
 using System.Collections.Generic;
+using _Scripts.Data.Components;
 using Random = UnityEngine.Random;
 
 namespace _Scripts.Managers
@@ -13,8 +14,9 @@ namespace _Scripts.Managers
         
         private enum State
         {
+            None,
             WaitingToSpawnNextWave,
-            SpawningWave,
+            SpawningWave
         }
 
         [SerializeField] private List<Transform> spawnTransformList;
@@ -43,6 +45,10 @@ namespace _Scripts.Managers
             _spawnPosition = spawnTransformList[Random.Range(0,spawnTransformList.Count)].position;
             nextWaveSpawnPositionTransform.position = _spawnPosition;
             _nextWaveSpawnTimer = 3f;
+            BuildingManager.Instance.GetHqBuilding().GetComponent<HealthSystem>().OnDied += (sender, args) =>
+            {
+                _currentState = State.None;
+            };
         }
         private void Update()
         {
