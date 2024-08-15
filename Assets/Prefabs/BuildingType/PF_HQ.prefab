@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5776505836693708676}
   m_Layer: 0
-  m_Name: projectileSpawnPos
+  m_Name: projectileSpawnPosL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3496196631451425506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: -1, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -373,6 +373,7 @@ Transform:
   - {fileID: 1682942865074613824}
   - {fileID: 7759807360028190123}
   - {fileID: 5776505836693708676}
+  - {fileID: 1934983291829548113}
   - {fileID: 1857379796743631750}
   - {fileID: 4670225168701902304}
   - {fileID: 3814402028281243361}
@@ -411,7 +412,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.028976917, y: -0.52563715}
+  m_Offset: {x: 0.04364848, y: 1.222537}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -422,7 +423,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.6676064, y: 4.214093}
+  m_Size: {x: 6.6969495, y: 7.710434}
   m_EdgeRadius: 0
 --- !u!114 &-8434994520329590141
 MonoBehaviour:
@@ -488,6 +489,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootTimerMax: 0.2
   targetMaxRadius: 20
+  projectileSpawnPositions:
+  - {fileID: 5776505836693708676}
+  - {fileID: 1934983291829548113}
+--- !u!1 &7582298010048982502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934983291829548113}
+  m_Layer: 0
+  m_Name: projectileSpawnPosR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1934983291829548113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7582298010048982502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 220282856480563113}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8654576488904243076
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,11 +751,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1981222134273300300, guid: 23bc5294e64e8fd4b96b61c7137065ac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.064
       objectReference: {fileID: 0}
     - target: {fileID: 1981222134273300300, guid: 23bc5294e64e8fd4b96b61c7137065ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.5
+      value: 4.53
       objectReference: {fileID: 0}
     - target: {fileID: 1981222134273300300, guid: 23bc5294e64e8fd4b96b61c7137065ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -737,6 +772,10 @@ PrefabInstance:
     - target: {fileID: 3104214402400726313, guid: 23bc5294e64e8fd4b96b61c7137065ac, type: 3}
       propertyPath: m_Name
       value: PF_BuildingRepairBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456010396282035488, guid: 23bc5294e64e8fd4b96b61c7137065ac, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3539523229584973568, guid: 23bc5294e64e8fd4b96b61c7137065ac, type: 3}
       propertyPath: healthSystem
@@ -814,6 +853,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 609909751227243689, guid: c02dba420892767418590cdcad8e7341, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450850043747277491, guid: c02dba420892767418590cdcad8e7341, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9487386
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450850043747277491, guid: c02dba420892767418590cdcad8e7341, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450850043747277491, guid: c02dba420892767418590cdcad8e7341, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

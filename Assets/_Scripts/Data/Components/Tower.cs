@@ -6,17 +6,17 @@ namespace _Scripts.Data.Components
     {
         [SerializeField] private float shootTimerMax = 0.5f;
         [SerializeField] private float targetMaxRadius = 20f;
+        [SerializeField] private Transform[] projectileSpawnPositions;
 
         private Enemy _targetEnemy;
         private float _lookForTargetTimer;
         private const float LOOK_FOR_TARGET_TIMER_MAX = 0.2f;
 
         private float _shootArrowTimer;
-        private Vector3 _projectileSpawnPos;
-
+      
         private void Awake()
         {
-            _projectileSpawnPos = transform.Find("projectileSpawnPos").position;
+            //_projectileSpawnPos = transform.Find("projectileSpawnPos").position;
         }
 
         private void Update()
@@ -31,9 +31,13 @@ namespace _Scripts.Data.Components
             if (!(_shootArrowTimer <= 0)) return;
             _shootArrowTimer += shootTimerMax;
             if (_targetEnemy != null)
-                ArrowProjectile.Create(_projectileSpawnPos, _targetEnemy);
+            {
+                foreach (var projectileSpawn in projectileSpawnPositions)
+                {
+                    ArrowProjectile.Create(projectileSpawn.position, _targetEnemy);
+                }
+            }
         }
-
         private void HandleTargetTimer()
         {
             _lookForTargetTimer -= Time.deltaTime;

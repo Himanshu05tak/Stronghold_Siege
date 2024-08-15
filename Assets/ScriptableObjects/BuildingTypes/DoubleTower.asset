@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d347207f210a49f49a530083e69803b9, type: 3}
-  m_Name: Tower
+  m_Name: DoubleTower
   m_EditorClassIdentifier: 
   nameString: Tower
-  prefab: {fileID: 220282856480563113, guid: 5e10647eb3921964e85f6fabd4ffb584, type: 3}
+  prefab: {fileID: 220282856480563113, guid: d6b0db6b63976dc4ab4f8b5b84fa598b, type: 3}
   hasResourceGeneratorData: 0
   resourceGeneratorData:
     timerMax: 0
@@ -24,8 +24,8 @@ MonoBehaviour:
   minConstructionRadius: 7
   constructionResourceAmounts:
   - resourceType: {fileID: 11400000, guid: da4abc7c8440fc642a4c94bb6b27d6af, type: 2}
-    amount: 50
+    amount: 75
   - resourceType: {fileID: 11400000, guid: 573e38fbe72b56743b7da5f5b40d02d7, type: 2}
-    amount: 50
-  healthAmountMax: 75
+    amount: 75
+  healthAmountMax: 100
   constructionTimerMax: 5

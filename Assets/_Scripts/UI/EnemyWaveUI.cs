@@ -10,8 +10,9 @@ namespace _Scripts.UI
     {
         [SerializeField] private EnemyWaveManager enemyWaveManager;
         [SerializeField] private Image waveImageBar;
+        [SerializeField] private TextMeshProUGUI waveNumberText;
         
-        private TextMeshProUGUI _waveNumberText;
+        
         private TextMeshProUGUI _waveMessageText;
         private RectTransform _enemyWaveSpawnPositionIndicator;
         private RectTransform _enemyClosestPositionIndicator;
@@ -23,7 +24,7 @@ namespace _Scripts.UI
         private void Awake()
         {
             waveImageBar = waveImageBar.GetComponent<Image>();
-            _waveNumberText = transform.Find("currentWaveNumberText").GetComponent<TextMeshProUGUI>();
+            waveNumberText = waveNumberText.GetComponent<TextMeshProUGUI>();
             _enemyWaveSpawnPositionIndicator = transform.Find("enemyWaveSpawnPositionIndicator").GetComponentInChildren<RectTransform>();
             _enemyClosestPositionIndicator = transform.Find("enemyClosestSpawnPosition").GetComponentInChildren<RectTransform>();
         }
@@ -111,7 +112,7 @@ namespace _Scripts.UI
         
         private void SetWaveNumberText(string message)
         {
-            _waveNumberText.SetText(message);
+            waveNumberText.SetText(message);
         }
     }
 }

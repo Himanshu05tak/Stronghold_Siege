@@ -41,7 +41,7 @@ namespace _Scripts.Data.Components
             OnHealed?.Invoke(this, EventArgs.Empty);
         }
 
-        public bool IsDead()
+        private bool IsDead()
         {
             return _healthAmount == 0;
         }

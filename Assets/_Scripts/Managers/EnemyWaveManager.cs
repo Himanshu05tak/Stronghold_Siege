@@ -45,6 +45,7 @@ namespace _Scripts.Managers
             _spawnPosition = spawnTransformList[Random.Range(0,spawnTransformList.Count)].position;
             nextWaveSpawnPositionTransform.position = _spawnPosition;
             _nextWaveSpawnTimer = 3f;
+            
             BuildingManager.Instance.GetHqBuilding().GetComponent<HealthSystem>().OnDied += (sender, args) =>
             {
                 _currentState = State.None;
@@ -60,6 +61,10 @@ namespace _Scripts.Managers
                 case State.SpawningWave:
                     SpawnEnemy();
                     break;
+                case State.None:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
         private void NextWaveSpawner()

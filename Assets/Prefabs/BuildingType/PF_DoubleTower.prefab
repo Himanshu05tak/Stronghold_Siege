@@ -84,6 +84,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4079139562549510055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2889081271126398905}
+  m_Layer: 0
+  m_Name: projectileSpawnPosR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2889081271126398905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079139562549510055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: 3.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 220282856480563113}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4316318294162299435
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5721187962876278557}
   m_Layer: 0
-  m_Name: projectileSpawnPos
+  m_Name: projectileSpawnPosL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4441593874802050110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.35, z: 0}
+  m_LocalPosition: {x: -0.25, y: 3.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -212,9 +243,9 @@ GameObject:
   - component: {fileID: 1168238606851793629}
   - component: {fileID: 5054188482230080488}
   - component: {fileID: -9159103299939374121}
-  - component: {fileID: -681276517453584577}
+  - component: {fileID: 5920678617820622211}
   m_Layer: 0
-  m_Name: PF_Tower
+  m_Name: PF_DoubleTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,6 +266,7 @@ Transform:
   - {fileID: 8686017439707623196}
   - {fileID: 7759807360028190123}
   - {fileID: 5721187962876278557}
+  - {fileID: 2889081271126398905}
   - {fileID: 3846155238672294353}
   - {fileID: 1155520311571991637}
   - {fileID: 6455047031430540626}
@@ -311,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0698b2590065251468aa919b561a68ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthAmountMax: 100
+  healthAmountMax: 50
 --- !u!114 &-9159103299939374121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022eefde0d9530c4bbae490a8c7eb338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-681276517453584577
+--- !u!114 &5920678617820622211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,10 +368,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2977eeb88f174a147899f27dd9726c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootTimerMax: 0.3
+  shootTimerMax: 0.5
   targetMaxRadius: 20
   projectileSpawnPositions:
   - {fileID: 5721187962876278557}
+  - {fileID: 2889081271126398905}
 --- !u!1001 &826283612578978585
 PrefabInstance:
   m_ObjectHideFlags: 0
