@@ -3,7 +3,7 @@ guid: 0dcb8c89338ce274983f3207c2968444
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -20,9 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -31,16 +34,16 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 0
   spriteMeshType: 0
   alignment: 0
@@ -50,14 +53,19 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -69,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -81,24 +90,746 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
-    outline: []
+    sprites:
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_0
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 341
+        width: 121
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84eea81823dc00941b64c02fa9ee1354
+      internalID: 1948501789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_1
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 340
+        width: 131
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2483106f2ef1b854fa34039d2f272a1e
+      internalID: 1533544185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_2
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 342
+        width: 37
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10d7be76f855e534c932b7b05bb088b5
+      internalID: -1320944773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_3
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 342
+        width: 101
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29cc9663d750a0842a4c50b51c010140
+      internalID: 1361849140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_4
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 341
+        width: 141
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ec732cba1f8814ba4675b437a8575f
+      internalID: -1404427530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_5
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 342
+        width: 103
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f1a12f022afad4ca268a1c9d42e785
+      internalID: 1908947583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_6
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 342
+        width: 123
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30a5e4b118480df4eb87fb7510affa25
+      internalID: -1368206831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_7
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 349
+        width: 204
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9abf375e269abce4e9be2246ee72fea6
+      internalID: -2121902977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_8
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 313
+        width: 1525
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e039f10ed43e724c965a577ce2e4f81
+      internalID: -1179580732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_9
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 115
+        width: 161
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e3a7cb7af4d8cb4fa20a70862d1bf1f
+      internalID: -404122276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_10
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 113
+        width: 140
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c63fbd1aaa4764794705d4ab0055df
+      internalID: 1499774981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_11
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 115
+        width: 102
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d82151bea53248a42b69f6d67b04ab5f
+      internalID: 1435155734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_12
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 115
+        width: 99
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5237426630efaf47a81fad65cf32174
+      internalID: 1210796111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_13
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 115
+        width: 103
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a9853f8cfaaa1469f9a180c8a4b57f
+      internalID: -1398954892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_14
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 115
+        width: 133
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 746971b7a8f74f946a6780a4a36f3a71
+      internalID: -563643003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_15
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 113
+        width: 140
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffa79a4cc90de48489aa73b2752be3f6
+      internalID: 511101480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_16
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 115
+        width: 102
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26fa3ea0163f3354ea3fbf9791280436
+      internalID: 1223102884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BuilderDefenderLogo_17
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 115
+        width: 123
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9534d316666aa014db85e753e650a1e4
+      internalID: 583794844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -458, y: 1}
+      - {x: -458, y: -188}
+      - {x: -358, y: -188}
+      - {x: -314, y: -163}
+      - {x: -314, y: -22}
+      - {x: -340, y: 1}
+    - - {x: 259, y: 1}
+      - {x: 259, y: -188}
+      - {x: 387, y: -188}
+      - {x: 403, y: -138}
+      - {x: 403, y: -33}
+      - {x: 381, y: 1}
+    - - {x: -630, y: 0}
+      - {x: -645, y: -24}
+      - {x: -645, y: -113}
+      - {x: -580, y: -186}
+      - {x: -550, y: -186}
+      - {x: -480, y: -78}
+      - {x: -480, y: -25}
+      - {x: -538, y: 0}
+    - - {x: -292, y: 0}
+      - {x: -292, y: -184}
+      - {x: -290, y: -186}
+      - {x: -186, y: -186}
+      - {x: -186, y: -41}
+      - {x: -189, y: 0}
+    - - {x: -164, y: 0}
+      - {x: -164, y: -183}
+      - {x: -161, y: -186}
+      - {x: -119, y: -186}
+      - {x: -61, y: -143}
+      - {x: -61, y: 0}
+    - - {x: -35, y: 0}
+      - {x: -37, y: -2}
+      - {x: -37, y: -186}
+      - {x: 70, y: -186}
+      - {x: 70, y: -69}
+      - {x: 66, y: 0}
+    - - {x: 226, y: -186}
+      - {x: 228, y: -185}
+      - {x: 228, y: 0}
+      - {x: 91, y: 0}
+      - {x: 91, y: -183}
+      - {x: 94, y: -186}
+      - {x: 127, y: -186}
+      - {x: 129, y: -184}
+      - {x: 129, y: -83}
+      - {x: 188, y: -186}
+    - - {x: 425, y: -2}
+      - {x: 425, y: -184}
+      - {x: 427, y: -186}
+      - {x: 531, y: -186}
+      - {x: 531, y: 0}
+      - {x: 427, y: 0}
+    - - {x: 680, y: -186}
+      - {x: 680, y: -40}
+      - {x: 661, y: 1}
+      - {x: 553, y: 1}
+      - {x: 553, y: -186}
+      - {x: 592, y: -186}
+      - {x: 594, y: -183}
+      - {x: 620, y: -186}
+    - - {x: -417, y: -152}
+      - {x: -417, y: -34}
+      - {x: -412, y: -34}
+      - {x: -399, y: -33}
+      - {x: -398, y: -34}
+      - {x: -383, y: -37}
+      - {x: -374, y: -43}
+      - {x: -365, y: -54}
+      - {x: -361, y: -64}
+      - {x: -359, y: -73}
+      - {x: -358, y: -81}
+      - {x: -357, y: -98}
+      - {x: -358, y: -99}
+      - {x: -359, y: -108}
+      - {x: -362, y: -123}
+      - {x: -368, y: -134}
+      - {x: -379, y: -145}
+      - {x: -388, y: -149}
+      - {x: -395, y: -151}
+      - {x: -404, y: -152}
+      - {x: -414, y: -153}
+      - {x: -415, y: -152}
+    - - {x: 300, y: -152}
+      - {x: 300, y: -34}
+      - {x: 305, y: -34}
+      - {x: 318, y: -33}
+      - {x: 319, y: -34}
+      - {x: 329, y: -36}
+      - {x: 340, y: -41}
+      - {x: 347, y: -47}
+      - {x: 351, y: -54}
+      - {x: 356, y: -65}
+      - {x: 358, y: -73}
+      - {x: 359, y: -82}
+      - {x: 360, y: -97}
+      - {x: 359, y: -98}
+      - {x: 358, y: -107}
+      - {x: 356, y: -120}
+      - {x: 354, y: -123}
+      - {x: 350, y: -132}
+      - {x: 343, y: -141}
+      - {x: 336, y: -146}
+      - {x: 322, y: -151}
+      - {x: 313, y: -152}
+      - {x: 303, y: -153}
+      - {x: 302, y: -152}
+    - - {x: 595, y: -33}
+      - {x: 602, y: -33}
+      - {x: 607, y: -32}
+      - {x: 608, y: -33}
+      - {x: 615, y: -33}
+      - {x: 616, y: -34}
+      - {x: 621, y: -35}
+      - {x: 625, y: -38}
+      - {x: 627, y: -40}
+      - {x: 630, y: -44}
+      - {x: 631, y: -50}
+      - {x: 632, y: -51}
+      - {x: 632, y: -60}
+      - {x: 631, y: -61}
+      - {x: 630, y: -67}
+      - {x: 628, y: -69}
+      - {x: 626, y: -73}
+      - {x: 625, y: -73}
+      - {x: 620, y: -77}
+      - {x: 618, y: -77}
+      - {x: 614, y: -79}
+      - {x: 610, y: -79}
+      - {x: 609, y: -80}
+      - {x: 595, y: -80}
+    - - {x: -746, y: 29}
+      - {x: -752, y: 26}
+      - {x: -752, y: 16}
+      - {x: -750, y: 12}
+      - {x: 773, y: 12}
+      - {x: 777, y: 15}
+      - {x: 777, y: 23}
+      - {x: 775, y: 29}
+    - - {x: -379, y: 227}
+      - {x: -380, y: 225}
+      - {x: -435, y: 227}
+      - {x: -472, y: 227}
+      - {x: -474, y: 225}
+      - {x: -474, y: 98}
+      - {x: -471, y: 75}
+      - {x: -446, y: 39}
+      - {x: -368, y: 39}
+      - {x: -339, y: 56}
+      - {x: -339, y: 227}
+    - - {x: -642, y: 229}
+      - {x: -642, y: 42}
+      - {x: -640, y: 40}
+      - {x: -538, y: 40}
+      - {x: -517, y: 48}
+      - {x: -517, y: 221}
+      - {x: -519, y: 229}
+    - - {x: 87, y: 227}
+      - {x: 67, y: 229}
+      - {x: -52, y: 229}
+      - {x: -52, y: 40}
+      - {x: 30, y: 40}
+      - {x: 60, y: 50}
+      - {x: 93, y: 78}
+      - {x: 93, y: 194}
+    - - {x: -286, y: 227}
+      - {x: -288, y: 225}
+      - {x: -288, y: 44}
+      - {x: -285, y: 41}
+      - {x: -250, y: 41}
+      - {x: -247, y: 44}
+      - {x: -247, y: 225}
+      - {x: -249, y: 227}
+    - - {x: -155, y: 225}
+      - {x: -157, y: 227}
+      - {x: -194, y: 227}
+      - {x: -196, y: 225}
+      - {x: -196, y: 44}
+      - {x: -193, y: 41}
+      - {x: -94, y: 41}
+      - {x: -91, y: 44}
+      - {x: -91, y: 75}
+      - {x: -93, y: 77}
+    - - {x: 135, y: 227}
+      - {x: 135, y: 42}
+      - {x: 138, y: 41}
+      - {x: 242, y: 41}
+      - {x: 242, y: 227}
+    - - {x: 412, y: 42}
+      - {x: 412, y: 209}
+      - {x: 397, y: 229}
+      - {x: 285, y: 229}
+      - {x: 285, y: 43}
+      - {x: 287, y: 41}
+      - {x: 323, y: 41}
+      - {x: 325, y: 43}
+      - {x: 360, y: 41}
+      - {x: 409, y: 41}
+    - - {x: 456, y: 109}
+      - {x: 549, y: 48}
+      - {x: 664, y: 48}
+      - {x: 664, y: 114}
+      - {x: 625, y: 223}
+      - {x: 478, y: 223}
+      - {x: 456, y: 206}
+    - - {x: -600, y: 121}
+      - {x: -582, y: 121}
+      - {x: -581, y: 120}
+      - {x: -570, y: 116}
+      - {x: -563, y: 109}
+      - {x: -561, y: 102}
+      - {x: -560, y: 94}
+      - {x: -561, y: 94}
+      - {x: -564, y: 84}
+      - {x: -569, y: 79}
+      - {x: -579, y: 74}
+      - {x: -584, y: 74}
+      - {x: -599, y: 73}
+      - {x: -600, y: 74}
+    - - {x: -10, y: 193}
+      - {x: -9, y: 193}
+      - {x: -8, y: 194}
+      - {x: 10, y: 194}
+      - {x: 11, y: 193}
+      - {x: 22, y: 191}
+      - {x: 27, y: 188}
+      - {x: 35, y: 183}
+      - {x: 35, y: 182}
+      - {x: 39, y: 177}
+      - {x: 41, y: 174}
+      - {x: 44, y: 169}
+      - {x: 44, y: 167}
+      - {x: 47, y: 160}
+      - {x: 47, y: 157}
+      - {x: 48, y: 151}
+      - {x: 49, y: 150}
+      - {x: 49, y: 125}
+      - {x: 48, y: 124}
+      - {x: 48, y: 118}
+      - {x: 47, y: 117}
+      - {x: 46, y: 112}
+      - {x: 46, y: 109}
+      - {x: 43, y: 103}
+      - {x: 43, y: 101}
+      - {x: 40, y: 96}
+      - {x: 38, y: 93}
+      - {x: 38, y: 92}
+      - {x: 32, y: 85}
+      - {x: 31, y: 85}
+      - {x: 25, y: 81}
+      - {x: 20, y: 78}
+      - {x: 14, y: 77}
+      - {x: 9, y: 76}
+      - {x: 8, y: 75}
+      - {x: -10, y: 75}
+    - - {x: 326, y: 194}
+      - {x: 328, y: 194}
+      - {x: 329, y: 195}
+      - {x: 343, y: 195}
+      - {x: 344, y: 194}
+      - {x: 348, y: 194}
+      - {x: 349, y: 193}
+      - {x: 351, y: 193}
+      - {x: 358, y: 188}
+      - {x: 363, y: 179}
+      - {x: 363, y: 165}
+      - {x: 362, y: 164}
+      - {x: 362, y: 162}
+      - {x: 360, y: 159}
+      - {x: 357, y: 154}
+      - {x: 356, y: 154}
+      - {x: 353, y: 152}
+      - {x: 348, y: 149}
+      - {x: 345, y: 149}
+      - {x: 344, y: 148}
+      - {x: 337, y: 148}
+      - {x: 336, y: 147}
+      - {x: 326, y: 147}
+    - - {x: -600, y: 195}
+      - {x: -592, y: 195}
+      - {x: -589, y: 196}
+      - {x: -588, y: 195}
+      - {x: -580, y: 195}
+      - {x: -579, y: 194}
+      - {x: -573, y: 192}
+      - {x: -569, y: 189}
+      - {x: -565, y: 182}
+      - {x: -565, y: 171}
+      - {x: -566, y: 170}
+      - {x: -567, y: 166}
+      - {x: -571, y: 161}
+      - {x: -572, y: 161}
+      - {x: -576, y: 158}
+      - {x: -578, y: 158}
+      - {x: -582, y: 156}
+      - {x: -587, y: 156}
+      - {x: -588, y: 155}
+      - {x: -600, y: 155}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      BuilderDefenderLogo_0: 1948501789
+      BuilderDefenderLogo_1: 1533544185
+      BuilderDefenderLogo_10: 1499774981
+      BuilderDefenderLogo_11: 1435155734
+      BuilderDefenderLogo_12: 1210796111
+      BuilderDefenderLogo_13: -1398954892
+      BuilderDefenderLogo_14: -563643003
+      BuilderDefenderLogo_15: 511101480
+      BuilderDefenderLogo_16: 1223102884
+      BuilderDefenderLogo_17: 583794844
+      BuilderDefenderLogo_2: -1320944773
+      BuilderDefenderLogo_3: 1361849140
+      BuilderDefenderLogo_4: -1404427530
+      BuilderDefenderLogo_5: 1908947583
+      BuilderDefenderLogo_6: -1368206831
+      BuilderDefenderLogo_7: -2121902977
+      BuilderDefenderLogo_8: -1179580732
+      BuilderDefenderLogo_9: -404122276
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 1
-  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
